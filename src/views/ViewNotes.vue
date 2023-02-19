@@ -1,22 +1,24 @@
 <template>
-	<v-container class="bg-cyan-lighten-4 rounded-xl mt-4" >
-	<v-textarea class="mt-4 mr-2"
-	  label="Write..."
-	  prepend-icon="mdi-book"
-	  variant="outlined"
-	  autofocus
-	  rounded
-	></v-textarea>
-	<row class="d-flex flex-row-reverse">
-	<v-btn icon color="blue" size="small" >
-		<v-icon icon="mdi-send"></v-icon>
-	</v-btn>
-	</row>
-	</v-container>
+
+	<AddEditNote />
 	
-	<TakeNotes />
+	<v-container class="mt-5">
+		<TakeNotes />
+	</v-container>
 </template>
 
-<script>
-import TakeNotes from '@/components/Layout/TakeNotes.vue';
+<script setup>
+
+import TakeNotes from '@/components/notes/TakeNotes.vue';
+import AddEditNote from '@/components/notes/AddEditNote.vue'
+
+import { useStore } from '@/stores/store.js'
+
+import { ref } from 'vue';
+
+const stores = useStore()
+
+const newNote = ref('')
+
+
 </script>

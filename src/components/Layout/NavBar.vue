@@ -12,7 +12,7 @@
 		  </template>
 
   
-		  <v-app-bar-title class="text-h6 text-md-h5 text-lg-h4 ml-">TakeNotes</v-app-bar-title>
+		  <v-app-bar-title class="text-h6 text-md-h5 text-lg-h4 font-weight-bold ml-5">Okyanus</v-app-bar-title>
   
 		  <v-spacer></v-spacer>
   
