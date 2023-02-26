@@ -1,6 +1,12 @@
 <template>
 
-	<AddEditNote />
+	<AddEditNote v-model="newNote">
+		<template #buttons>
+			<v-btn icon color="blue" size="small" @click="stores.addNote(newNote)" :disabled="!newNote" >
+				<v-icon icon="mdi-send"></v-icon>
+			</v-btn>
+		</template>
+	</AddEditNote>
 	
 	<v-container class="mt-5">
 		<TakeNotes />

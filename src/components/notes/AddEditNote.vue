@@ -1,21 +1,20 @@
 <template>
-	<v-container class="bg-cyan-lighten-4 rounded-xl mt-4" >
+	<v-container class="bg-cyan-darken-3 rounded-xl mt-4" >
 	
-	<v-textarea class="mt-4 mr-2"
-	  label="Write..."
-	  prepend-icon="mdi-book"
-	  variant="outlined"
-	  autofocus
-	  rounded
-	  v-model="newNote"
-	></v-textarea>
-	<row class="d-flex flex-row-reverse">
-	<v-btn icon color="blue" size="small" @click="stores.addNote(newNote)" :disabled="!newNote" >
-		<v-icon icon="mdi-send" v-if="!editMode"></v-icon>
-		<v-icon icon="mdi-save" v-else></v-icon>
-	</v-btn>
-	</row>
-	</v-container>
+		<v-textarea class="mt-4 mr-2"
+		  label="Write..."
+		  prepend-icon="mdi-book"
+		  variant="outlined"
+		  autofocus
+		  rounded
+		  v-model="props.modelValue"
+		  :placeholder="props.placeholder"
+		  @input="$emit('update:modelValue',$event.target.value)"
+		></v-textarea>
+		<row class="d-flex flex-row-reverse">
+		<slot name="buttons"/>
+		</row>
+		</v-container>
 </template>
 
 <script setup>
@@ -23,7 +22,17 @@ import { useStore } from '@/stores/store.js'
 
 import { ref } from 'vue';
 
-const props = defineProps(['editMode'])
+
+const props = defineProps({
+	modelValue:{
+		type: String,
+		required: true
+	},
+	placeholder:{
+		type:String,
+		default: "Type something..."
+	}
+})
 
 
 const stores = useStore()

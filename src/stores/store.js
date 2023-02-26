@@ -20,7 +20,11 @@ export const useStore = defineStore( 'storeState',{
 	},
 	
 	getters: {
-		
+		getNoteContent: (state) => {
+			return (id) => {
+				return state.noted.filter(note => { return note.id === id})[0]
+			}
+		}
 	},
 
 	actions: {
@@ -31,9 +35,8 @@ export const useStore = defineStore( 'storeState',{
 				title: 'Title',
 				content: newNote
 			}
-			
+
 			this.noted.unshift(newEl)
-			console.log()
 		},
 		delNote(idWDel){
 			for(let i = 0; i < this.noted.length; i++){
@@ -45,7 +48,14 @@ export const useStore = defineStore( 'storeState',{
 					this.noted.pop()
 				}
 			}
+		},
+		changenote(id, newcont){
+			for(let i = 0; i < this.noted.length; i++){
+				if(this.noted[i].id == this.noted[id].id){
+					this.noted[i].content = newcont
+					break
+				}
+			}
 		}
-
 	}
 })

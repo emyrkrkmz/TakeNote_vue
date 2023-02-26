@@ -22,7 +22,7 @@
 	</v-footer>
 </v-app>
 </template>
-
+			
 <script>
   export default {
     data: () => ({
